@@ -1,0 +1,8 @@
+df=read.table("household_power_consumption.txt",header = TRUE,sep = ";")
+library(dplyr) 
+names(df)
+my_data=filter(df,Date %in% c('1/2/2007','2/2/2007'))
+my_data$Global_active_power=as.numeric(my_data$Global_active_power)
+png(filename = "Plot1.png")
+hist(my_data$Global_active_power,col = 'red',main='Global Active Power',xlab = 'Global Active Power(killowatt)')
+dev.off()
